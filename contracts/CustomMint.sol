@@ -24,8 +24,10 @@ contract CustomMint is ERC721, ERC721Enumerable, Ownable {
     /**
      * @dev  maxSupply set to mint only 100 tokens
      *  mintFee variable declared so that it could be updated anytime
+     * uin8 as uint256 mirrors to string ??!!
      */
-    uint256 public constant maxSupply = 100;
+    uint8 public constant maxSupply = 100; 
+    // test could be done only when it was declared public.
     uint256 mintFee = 0.001 ether;
 
     // function _baseURI() internal pure override returns (string memory) {
@@ -71,6 +73,7 @@ contract CustomMint is ERC721, ERC721Enumerable, Ownable {
 
     // function to update the mint fee for the future time
     function setMintFee(uint256 _fee) external onlyOwner {
+        require(_fee > 0 ether, "Fee value must not be less than or equal to 0 !");
         mintFee = _fee;
     }
 

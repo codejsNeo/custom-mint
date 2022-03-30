@@ -8,12 +8,15 @@
  
  module.exports = {
     solidity: "0.8.4",
-    defaultNetwork: "ropsten",
+    defaultNetwork: "hardhat",
     networks: {
        hardhat: {},
-       ropsten: {
+       rinkeby: {
           url: API_URL,
           accounts: [`0x${PRIVATE_KEY}`]
        }
     },
+    mocha: {
+      timeout: 40000
+    }
  }
